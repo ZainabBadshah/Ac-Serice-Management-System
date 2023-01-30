@@ -1,13 +1,23 @@
-<!-- <?php if($_settings->chk_flashdata('success')): ?>
+<?php if($_settings->chk_flashdata('success')): ?>
 <script>
 	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
 </script>
 <?php endif;?>
+
+<style>
+    .img-avatar{
+        width:45px;
+        height:45px;
+        object-fit:cover;
+        object-position:center center;
+        border-radius:100%;
+    }
+</style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Packages</h3>
+		<h3 class="card-title">List of Customers</h3>
 		<div class="card-tools">
-			<a href="?page=packages/manage" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="?page=Customer/manage_customer" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -15,49 +25,40 @@
         <div class="container-fluid">
 			<table class="table table-bordered table-stripped">
 				<colgroup>
-					<col width="5%">
-					<col width="15%">
-					<col width="20%">
-					<col width="35%">
 					<col width="10%">
 					<col width="15%">
+					<col width="25%">
+					<col width="25%">
+					<col width="15%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
-						<th>Package</th>
-						<th>Description</th>
-						<th>Status</th>
+						<th>Avatar</th>
+						<th>Name</th>
+						<th>Username</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php 
 					$i = 1;
-						$qry = $conn->query("SELECT * from `packages` order by date(date_created) desc ");
+						$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name from `customer` where id = '{$_settings->userdata('id')}' order by concat(firstname,' ',lastname) asc ");
 						while($row = $qry->fetch_assoc()):
-                            $row['description'] = strip_tags(stripslashes(html_entity_decode($row['description'])));
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
-							<td><?php echo $row['title'] ?></td>
-							<td ><p class="truncate-1 m-0"><?php echo $row['description'] ?></p></td>
-							<td class="text-center">
-                                <?php if($row['status'] == 1): ?>
-                                    <span class="badge badge-success">Active</span>
-                                <?php else: ?>
-                                    <span class="badge badge-danger">Inactive</span>
-                                <?php endif; ?>
-                            </td>
+							<td class="text-center"><img src="<?php echo validate_image($row['avatar']) ?>" class="img-avatar img-thumbnail p-0 border-2" alt="customer_avatar"></td>
+							<td><?php echo ucwords($row['name']) ?></td>
+							<td ><p class="m-0 truncate-1"><?php echo $row['username'] ?></p></td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="?page=packages/manage&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
+				                    <a class="dropdown-item" href="?page=customer/manage_customer&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
@@ -73,14 +74,14 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this package permanently?","delete_package",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this Customer permanently?","delete_user",[$(this).attr('data-id')])
 		})
 		$('.table').dataTable();
 	})
-	function delete_package($id){
+	function delete_user($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_package",
+			url:_base_url_+"classes/Customer.php?f=delete",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",
@@ -99,4 +100,4 @@
 			}
 		})
 	}
-</script> -->
+</script>

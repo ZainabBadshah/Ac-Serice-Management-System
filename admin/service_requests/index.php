@@ -25,7 +25,7 @@
 					<tr>
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Client Name</th>
+						<th>Customer Name</th>
 						<th>Service</th>
 						<th>Status</th>
 						<th>Action</th>

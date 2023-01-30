@@ -63,15 +63,36 @@ while($row = $meta->fetch_assoc()){
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="vehicle_name" class="control-label">AC Name</label>
-                    <input type="text" name="vehicle_name" id="vehicle_name" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_name) ? $vehicle_name : "" ?>" required>
+                    <!-- <input type="text" name="vehicle_name" id="vehicle_name" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_name) ? $vehicle_name : "" ?>" required> -->
+                    <select name="vehicle_name" id="vehicle_name" class="form-select form-select-sm select2 rounded-0" required>
+                    <option <?php echo isset($ac_name) && $sac_name == 'Voltas' ? "selected" : '' ?>>Voltas</option>
+                        <option <?php echo isset($ac_name) && $ac_name == 'IFB' ? "selected" : '' ?>>IFB</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="vehicle_registration_number" class="control-label">Ac Capacity(Tonne)</label>
-                    <input type="text" name="vehicle_registration_number" id="vehicle_registration_number" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_registration_number) ? $vehicle_registration_number : "" ?>" required>
+                    <!-- <input type="text" name="vehicle_registration_number" id="vehicle_registration_number" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_registration_number) ? $vehicle_registration_number : "" ?>" required> -->
                 </div>
+                <select name="vehicle_name" id="vehicle_name" class="form-select form-select-sm select2 rounded-0" required>
+                    <option <?php echo isset($ac_name) && $sac_name == '0.75' ? "selected" : '' ?>>0.75</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '1' ? "selected" : '' ?>>1</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '1.5' ? "selected" : '' ?>>1.5</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '2' ? "selected" : '' ?>>2</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '2.5' ? "selected" : '' ?>>2.5</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '3' ? "selected" : '' ?>>3</option>
+                    </select>
                 <div class="form-group">
                     <label for="vehicle_model" class="control-label">Purchase Year</label>
-                    <input type="text" name="vehicle_model" id="vehicle_model" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_model) ? $vehicle_model : "" ?>" required>
+                    <!-- <input type="text" name="vehicle_model" id="vehicle_model" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_model) ? $vehicle_model : "" ?>" required> -->
+                <select name="vehicle_model" class="form-select form-select-sm select2 rounded-0" required">
+                <?php
+                 $currentYear = date('Y');
+                 for ($i = $currentYear; $i >= 2010; $i--) {
+                 echo '<option value="'.$i.'">'.$i.'</option>';
+                  }
+                  ?>
+                </select>
+                <small>We only undertake work for models after 2010</small>
                 </div>
                 <div class="form-group">
                     <label for="service_id" class="control-label">Services</label>

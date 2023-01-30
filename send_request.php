@@ -15,6 +15,7 @@ require_once('config.php');
     border-radius: 0;
 }
 </style>
+<section class="mt-5 mb-4 p-5" style="flex: auto; border-style: inset;">
 <div class="container-fluid">
     <form action="" id="request_form">
         <input type="hidden" name="id">
@@ -97,6 +98,7 @@ require_once('config.php');
         </div>
     </form>
 </div>
+</section>
 <script>
     $(function(){
         $('.select2').select2({

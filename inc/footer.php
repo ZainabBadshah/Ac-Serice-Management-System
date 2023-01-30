@@ -59,10 +59,10 @@
   })
 </script>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
+        <footer class="bg-dark">
             <div class="container">
               <p class="m-0 text-center text-white">Copyright &copy; <?php echo $_settings->info('short_name') ?> </p>
-              <p class="m-0 text-center text-white">Developed By: <a href="mailto:badshahzain19@gmail.com">badshahzain19</a></p>
+              <p class="text-center text-white">Developed By: <a href="mailto:badshahzain19@gmail.com">badshahzain19</a></p>
           </div>
         </footer>
 
