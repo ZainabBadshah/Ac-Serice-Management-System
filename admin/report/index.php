@@ -69,7 +69,7 @@ $date_end = isset($_GET['date_end']) ? $_GET['date_end'] :  date("Y-m-d") ;
                         $where = "where date(date_created) between '{$date_start}' and '{$date_end}'";
                         $qry = $conn->query("SELECT * from service_requests {$where} order by unix_timestamp(date_created) desc");
                         while($row = $qry->fetch_assoc()):
-                        $meta = $conn->query("SELECT * FROM request_meta where request_id = '{$row['id']}'");
+                        $meta = $conn->query("SELECT * FROM request_meta");
                         while($mrow = $meta->fetch_assoc()){
                             $row[$mrow['meta_field']] =$mrow['meta_value'];
                         }

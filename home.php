@@ -1,38 +1,20 @@
- <!-- Background image -->
- <!-- <div
-    class="p-5 text-center bg-image"
-    style="
-      background-image: 'uploads/2884.jpg';
-      height: 400px;
-      margin-top: 58px;
-    "
-  >
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white w-100">
-        <h1 class="mb-3"><?php echo $_settings->info('name') ?></h1>
-        <p class="mb-3">We will take care of your Air Conditioner</p>
-        <a class="btn btn-outline-light btn-lg" href="./p=send_request" role="button">Register Your Request</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- Background image -->
-<!-- </header> -->
  <!-- Header-->
- <header class="bg-dark py-5" id="main-header">
-    
-    <div class="container h-100 d-flex align-items-end justify-content-center w-100">
-        <div class="text-center text-white w-100">
-            <h1 class="mb-3 display-5"><?php echo $_settings->info('name') ?></h1>
-            <p class="mb-3">We will take care of your Air Conditioner</p>
-            <div class="col-auto mt-2">
-                <button class="btn btn-primary btn-lg rounded-0" id="send_request" type="button">Register Your Request</button>
+  <link rel="stylesheet" type="text/css" href="./libs/style.css">
+
+
+<div class="hero vh-100 d-flex align-items-center" id="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mx-auto text-center">
+                    <h1 class="display-4 text-white"><?php echo $_settings->info('name') ?></h1>
+                    <p class="text-white my-3">The authorized Ac service center Pune and its surrounding areas for quick Ac repair/service and maintenance. 
+                      <br>  Our qualified AC technicians will come for doorstep service.</p>
+                    <a class="btn btn-primary btn-outline-light button-" id="send_request" type="button">Register Your Request</a>
+                </div>
             </div>
         </div>
     </div>
-</header>
-<!-- Section-->
+<!-- Section
 <section>
     <div class="container px-4 px-lg-5 mt-5 ">
         <div class="row">
@@ -48,106 +30,126 @@
                     <?php endwhile; ?>
                 </ul>
             </div>
-            </section>
-            <section class="container">
-            <div class="col-md-18 m-5">
-                <h3 class="fas fa-ubuntu"> Our Services: </h3>
-                <hr class="bg-primary opacity-100">
-                <div class="form-group">
-                <div class="input-group mb-3">
-                    <input type="search" id="search" class="form-control" placeholder="Search Service Here" aria-label="Search Service Here" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-primary" id="basic-addon2"><i class="fa fa-search"></i></span>
-                    </div>
+            </section> -->
+
+    <!--CardsServices-->
+    <section id="services">
+        <div class="container">
+        <hr class="bg-primary opacity-100">
+            <div class="row mb-3 mt-2">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-primary">SERIVCES</h6>
+                    <h1>Our Services</h1>
+                    <p>The authorized Ac service centers in Pune and its surrounding areas for quick Ac repair/service and maintenance. 
+                        <br>Their qualified AC technicians will come for doorstep service.</p>
                 </div>
-                </div>
-                <div class="container col-lg-8 overflow-x: scroll d-inline-block">
-                <div class="col " id="service_list">
+            </div>
+         
+                <div class="servicelist" id="service_list">
                     <?php 
                     $services = $conn->query("SELECT * FROM `service_list` where status = 1 order by `service`");
                     while($row= $services->fetch_assoc()):
                         $row['description'] = strip_tags(html_entity_decode(stripslashes($row['description'])));
                     ?>
-                    <!-- <a class="col item text-decoration-none text-dark view_service" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">
-                        <div class="callout callout-primary border-primary rounded-0">
-                            <dl>
-                                <dt><?php echo $row['service'] ?></dt>
-                                <dd class="truncate-3 text-muted lh-1"><small><?php echo $row['description'] ?></small></dd>
-                            </dl>
+                <div class="col-lg-4 col-sm-6 ">
+                    <div class="service card-effect bounceInUp custom-card">
+                    <a class="col item text-decoration-none text-dark view_service  fadeIn" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">
+                        <div class="iconbox">
+                            <i class='fas fa-toolbox'></i>
                         </div>
-                    </a> -->
-                    <div class="card" style="width: 20rem;">
-                    <a class="col item text-decoration-none text-dark view_service " href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">
-                    <div class="card-body">
-                    <h5 class="card-title font-weight-bold  fas fa-toolbox"><p>  </p><?php echo $row['service'] ?></h5>
-                    <p class="card-text"><small><?php echo $row['description'] ?></small></p>
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <h5 class="mt-4 mb-2"><?php echo $row['service'] ?></h5>
+                        <p class="text-black-50"><?php echo $row['description'] ?></p>
                     </div>
-                </div>
+                    </div>
                     <?php endwhile; ?>
                 </div>
                 <div id="noResult" style="display:none" class="text-center"><b>No Result</b></div>
-                </div>
-            </div>
+          
         </div>
     </div>
     
     </section>
+    <section class="row w-100 py-0 bg-light  best-container" id="features">
+        <div class="col-lg-6 col-img">
+    <img class="service-img" src="uploads/Services2.jpg">
+        </div>
+        <div class="col-lg-6 py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <h6 class="text-primary">What do we repair?</h6>
+                        <h1>Best Ac Services in the city</h1>
+                        
+                        <p>We are a team of experienced and certified technicians providing reliable and affordable 
+                            air conditioning repair services to both residential and commercial customers. Our goal is to 
+                            provide high-quality repairs and customer satisfaction through exceptional service and attention to detail.
+                             We use only the latest tools and techniques to diagnose and fix AC issues and ensure your comfort in any
+                             season. 
+                            Contact us today for all your AC repair needs!</p>
 
-    <section>
-    <!-- Happy Customer -->
-    <h3 class="fas fa-ubuntu text-center "> Happy Customer: </h3>
-    <div class="card-group m-3">
-    <div class="card m-3">
-    <img class="card-img-top" src="uploads/Avatar3.jpg"style="height:300px;" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Freya David</h5>
-      <p class="card-text">The engineers attended on time and worked hard throughout the day.They were very courteous and polite at all times.
-    They also tidied up after themselves.
-    We were so impressed with then that we will be working with them again next month.I would highly recommend this firm.</p>
-      
-    </div>
-  </div>
-  <div class="card m-3">
-    <img class="card-img-top" src="uploads/Avatar1.jpg" style="height:300px;" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Rahul Kumar</h5>
-      <p class="card-text">We installed AC units in four rooms using The AC Service Company. I cannot recommend them highly enough. The service we received was amazing and the installation went very smoothly and neatly. They cleaned up after each day and worked around our schedule.
-         We were very pleased with the final installation.</p>
-      
-    </div>
-  </div>
-  <div class="card m-3">
-    <img class="card-img-top " src="uploads/Avatar2.jpg"style="height:300px" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">Jacob Smith</h5>
-      <p class="card-text">The standard of service and quality of staff is excellent. 
-        They are knowledgeable, efficient and proactive.</p>
-      
-    </div>
-  </div>
-</div>
-            
-            
-                
-                
-                <!-- </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card shadow-lg mb-2">
-                        <div class="card-body text-center">
-                            <img src="" class="img-fluid" style="border-radius:100px;" alt="avt4">
-                            <h4 class="card-title">Jennifer David</h4>
-                            <p class="card-text">ullamcorper dolor id facilisis porttitor. Maecenas vel 
-                                facilisis magna. Nunc efficitur est nibh, nec scelerisque diam 
-                                fermentum cursus. </p>
-                        </div> -->
-
+                        <div class="feature d-flex mt-5">
+                        <hr class="bg-primary opacity-100">
+                    <ul class="list-group font-weight-light fas fa-tv">
+                    <?php 
+                    $category = $conn->query("SELECT * FROM `categories` where status = 1 order by `category` asc");
+                    while($row=$category->fetch_assoc()):
+                    ?>
+                    <li class="list-group-item"><b><?php echo $row['category'] ?></b></li>
+                    <?php endwhile; ?>
+                    </ul>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section><!-- FEATURES -->
+    <section>
+    <!-- Happy Customer -->
+    <section id="team">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-primary">CUSTOMERS</h6>
+                    <h1> What are our customers saying?</h1>
+                </div>
+            </div>
+            <div class="row text-center g-4">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="team-member card-effect">
+                        <img src="uploads/cust1.jpg" alt="">
+                        <h5 class="mb-0 mt-4">Danish Khan</h5>
+                        <p>The engineers attended on time and worked hard throughout the day.
+They were very courteous and polite at all times.
+They also tidied up after themselves.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="team-member card-effect">
+                        <img src="uploads/cust2.jpg" alt="">
+                        <h5 class="mb-0 mt-4">Raghav shet</h5>
+                        <p>The service we received was amazing and the installation went very smoothly and neatly. They cleaned up after each day and worked around our schedule. We were very pleased with the final installation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="team-member card-effect">
+                        <img src="uploads/cust3.jpg" alt="">
+                        <h5 class="mb-0 mt-4">Poonam Kejri</h5>
+                        <p>The standard of service and quality of staff is excellent. They are knowledgeable, efficient and proactive.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="team-member card-effect">
+                        <img src="uploads/cust4.jpg" alt="">
+                        <h5 class="mb-0 mt-4">Rick David</h5>
+                        <p>The engineers that installed the units were brilliant. They did a thorough job, including super neat trunking, and we're tidy for the duration of the job.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <script>
     $(function(){
         $('#search').on('input',function(){

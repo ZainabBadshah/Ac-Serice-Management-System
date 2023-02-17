@@ -179,7 +179,7 @@ Class Master extends DBConnection {
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k=> $v){
-			if(in_array($k,array('owner_name','category_id','vehicle_name','mechanic_id','status'))){
+			if(in_array($k,array('owner_name','category_id','vehicle_name','mechanic_id','status','vehicle_registration_number'))){
 				if(!empty($data)){ $data .= ", "; }
 
 				$data .= " `{$k}` = '{$v}'";
@@ -196,7 +196,7 @@ Class Master extends DBConnection {
 			$rid = empty($id) ? $this->conn->insert_id : $id ;
 			$data = "";
 			foreach($_POST as $k=> $v){
-				if(!in_array($k,array('id','owner_name','category_id','vehicle_name','mechanic_id','status'))){
+				if(!in_array($k,array('id','owner_name','category_id','vehicle_name','mechanic_id','status','vehicle_registration_number'))){
 					if(!empty($data)){ $data .= ", "; }
 					if(is_array($_POST[$k]))
 					$v = implode(",",$_POST[$k]);
@@ -237,6 +237,55 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 
 	}
+	function save_contactus(){
+		extract($_POST);
+		$data = "";
+		foreach($_POST as $k=> $v){
+			if(in_array($k,array('name','email','message'))){
+				if(!empty($data)){ $data .= ", "; }
+
+				$data .= " `{$k}` = '{$v}'";
+
+			}
+		}
+		if(empty($id)){
+			$sql = "INSERT INTO `contactus` set {$data} ";
+		}else{
+			$sql = "UPDATE `contactus` set {$data} where id ='{$id}' ";
+		}
+		$save = $this->conn->query($sql);
+		if($save){
+			$rid = empty($id) ? $this->conn->insert_id : $id ;
+			$data = "";
+			foreach($_POST as $k=> $v){
+				if(!in_array($k,array('id','name','email','message'))){
+					if(!empty($data)){ $data .= ", "; }
+					if(is_array($_POST[$k]))
+					$v = implode(",",$_POST[$k]);
+					$v = $this->conn->real_escape_string($v);
+					$data .= "('{$rid}','{$k}','{$v}')";
+				}
+			}
+			$sql = "INSERT INTO `request_meta` (`request_id`,`meta_field`,`meta_value`) VALUES {$data} ";
+			$this->conn->query("DELETE FROM `request_meta` where `request_id` = '{$rid}' ");
+			$save = $this->conn->query($sql);
+			if($save){
+				$resp['status'] = 'success';
+				$resp['id'] = $rid;
+			}else{
+				$resp['status'] = 'failed';
+				$resp['msg'] = $this->conn->error;
+				$resp['sql'] = $sql;
+			}
+
+		}else{
+			$resp['status'] = 'failed';
+			$resp['msg'] = $this->conn->error;
+			$resp['sql'] = $sql;
+		}
+
+		return json_encode($resp);
+	}
 }
 
 $Master = new Master();
@@ -267,6 +316,8 @@ switch ($action) {
 	case 'delete_request':
 		echo $Master->delete_request();
 	break;
+	case 'save_contactus':
+		echo $Master->save_contactus();
 	default:
 		// echo $sysset->index();
 		break;

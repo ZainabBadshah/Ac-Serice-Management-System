@@ -1,28 +1,112 @@
-<div class="container pt-5">
-    <h2 class="text-center">Have a concern? Contact Us.</h2>
-    <div class="row mt-4 mb-4">
-        <div class="col-md-6 offset-md-3 ">
-        <form action="" method="POST" class="shadow-lg p-4">
+<?php 
+require_once('config.php');
+?>
+<style>
+    #uni_modal .modal-footer{
+        display:none
+    }
+    span.select2-selection.select2-selection--single,span.select2-selection.select2-selection--multiple {
+    padding: 0.25rem 0.5rem;
+    min-height: calc(1.5em + 0.5rem + 2px);
+    height:auto !important;
+    max-height:calc(3.5em + 0.5rem + 2px);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="libs\style.css">
+<div class="container">
+	<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="well well-sm">
+          <form class="form-horizontal" id="contact_form" action="" method="post">
+          <fieldset>
+            <legend class="text-center pt-2 contact">Contact us</legend>
+    
+            <!-- Name input-->
             <div class="form-group">
-                <i class="fas fa-user"></i> <label for="name" class="fw-bold p-2">Name</label>
-                <input type="text" class="form-control" placeholder="Name" name="rName" required>
+              <label class="col-md-3 control-label" for="name">Name</label>
+              <div class="col-md-9">
+                <input id="name" name="name" type="text" placeholder="Your name" class="form-control form-control-sm" required>
+              </div>
             </div>
+            <!-- Email input-->
             <div class="form-group">
-                <i class="fas fa-user"></i> <label for="email" class="fw-bold p-2">Email Id</label>
-                <input type="text" class="form-control" placeholder="Email" name="rEmail" required>
-                <small class="form-text">We'll never share your Email with anyone else.</small>
+              <label class="col-md-3 control-label" for="email">Your E-mail</label>
+              <div class="col-md-9">
+                <input id="email" name="email" type="text" placeholder="Your email" class="form-control form-control-sm" required>
+              </div>
             </div>
+    
+            <!-- Message body -->
             <div class="form-group">
-                <i class="fas fa-phone"></i> <label for="pass" class="fw-bold p-2">Phone Number</label>
-                <input type="text" class="form-control" placeholder="Password" name="rPassword">
+              <label class="col-md-3 control-label" for="message">Your message</label>
+              <div class="col-md-9">
+                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" required></textarea>
+              </div>
             </div>
+    
+            <!-- Form actions -->
             <div class="form-group">
-                <i class="fas fa-question"></i> <label for="concern" class="fw-bold p-2">Describe you concern</label>
-                <input type="text" class="form-control" placeholder="concern" name="concern">
+              <div class="col-md-3 text-right">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-5 col-12 shadow-sm fw-bold" name="Submit">Submit</button>
-            <em style="font-size:15px;">We will Contact you soon.</em>
-        </form>
+          </fieldset>
+          </form>
         </div>
-    </div>
-    </div>
+    	</div>
+        <!-- <div class="span4">
+    		<h2 class="font-weight-bold">Contact Us</h2>
+    		<address>
+    			<strong>Ac Services</strong><br>
+    			Lane 42<br>
+    			Fatimanagar<br>
+    			Pune<br>
+    			411028<br>
+    			Maharashtra<br>
+    			<abbr title="Phone">Phone:</abbr> 899-656-3456
+    		</address>
+      </div> -->
+	</div>
+</div>
+<script>
+    $(function(){
+        $('.select2').select2({
+            placeholder:"Please Select Here",
+            dropdownParent: $('#uni_modal')
+        })
+        
+        $('#contact_form').submit(function(e){
+            e.preventDefault()
+            start_loader();
+            $.ajax({
+                url:'classes/Master.php?f=save_contactus',
+                method:'POST',
+                data:$(this).serialize(),
+                dataType:'json',
+                error:err=>{
+                    console.log(err)
+                    alert_toast("An error occured",'error');
+                    end_loader()
+                },
+                success:function(resp){
+                    end_loader()
+                    if(resp.status == 'success'){
+                        $('#uni_modal').on('hidden.bs.modal', function(){
+                            if($(this).find('#contact_form').length > 0){
+                                setTimeout(() => {
+                                    uni_modal("","success_msg.php")
+                                }, 200);
+                            }
+                        })
+                        $('#uni_modal').modal('hide')
+                    }else{
+                        alert_toast("An error occured",'error');
+                    }
+                }
+            })
+        })
+    })
+</script>

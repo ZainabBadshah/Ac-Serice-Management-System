@@ -55,6 +55,23 @@ class Login extends DBConnection {
 		}
 		return json_encode($resp);
 	}
+	public function Custlogin(){
+		extract($_POST);
+
+		$qry = $this->conn->query("SELECT * from customer where username = '$username' and password = md5('$password') ");
+		if($qry->num_rows > 0){
+			foreach($qry->fetch_array() as $k => $v){
+				if(!is_numeric($k) && $k != 'password'){
+					$this->settings->set_userdata($k,$v);
+				}
+
+			}
+			$this->settings->set_userdata('login_type',1);
+		return json_encode(array('status'=>'success'));
+		}else{
+		return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from customer where username = '$username' and password = md5('$password') "));
+		}
+	}
 }
 $action = !isset($_GET['f']) ? 'none' : strtolower($_GET['f']);
 $auth = new Login();
@@ -67,6 +84,9 @@ switch ($action) {
 		break;
 	case 'logout':
 		echo $auth->logout();
+		break;
+	case 'Custlogin':
+		echo $auth->Custlogin();
 		break;
 	default:
 		echo $auth->index();

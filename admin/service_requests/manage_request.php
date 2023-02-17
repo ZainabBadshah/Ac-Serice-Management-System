@@ -46,6 +46,7 @@ while($row = $meta->fetch_assoc()){
                 <div class="form-group">
                     <label for="owner_name" class="control-label">Owner Fullname</label>
                     <input type="text" name="owner_name" id="owner_name" class="form-control form-control-sm rounded-0" value="<?php echo isset($owner_name) ? $owner_name : "" ?>" required>
+                    
                 </div>
                 <div class="form-group">
                     <label for="contact" class="control-label">Owner Contact #</label>
@@ -70,10 +71,10 @@ while($row = $meta->fetch_assoc()){
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="vehicle_registration_number" class="control-label">Ac Capacity(Tonne)</label>
+                    <label for="ac_capacity" class="control-label">Ac Capacity(Tonne)</label>
                     <!-- <input type="text" name="vehicle_registration_number" id="vehicle_registration_number" class="form-control form-control-sm rounded-0" value="<?php echo isset($vehicle_registration_number) ? $vehicle_registration_number : "" ?>" required> -->
                 </div>
-                <select name="vehicle_name" id="vehicle_name" class="form-select form-select-sm select2 rounded-0" required>
+                <select name="vehicle_registration_number" id="vehicle_registration_number" class="form-select form-select-sm select2 rounded-0" required>
                     <option <?php echo isset($ac_name) && $sac_name == '0.75' ? "selected" : '' ?>>0.75</option>
                         <option <?php echo isset($ac_name) && $ac_name == '1' ? "selected" : '' ?>>1</option>
                         <option <?php echo isset($ac_name) && $ac_name == '1.5' ? "selected" : '' ?>>1.5</option>

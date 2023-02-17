@@ -54,15 +54,33 @@ require_once('config.php');
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ac_brand" class="control-label">Ac Brand</label>
-                    <input type="text" name="ac_brand" id="ac_brand" class="form-control form-control-sm rounded-0" required>
+                    <select name="vehicle_name" id="vehicle_name" class="form-select form-select-sm select2 rounded-0" required>
+                    <option <?php echo isset($ac_name) && $sac_name == 'Voltas' ? "selected" : '' ?>>Voltas</option>
+                        <option <?php echo isset($ac_name) && $ac_name == 'IFB' ? "selected" : '' ?>>IFB</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="ac_capacity" class="control-label">Ac Capacity(Tonne)</label>
-                    <input type="text" name="ac_capacity" id="ac_capacity" class="form-control form-control-sm rounded-0" required>
+                    <select name="vehicle_registration_number" id="vehicle_registration_number">
+                    <option <?php echo isset($ac_name) && $sac_name == '0.75' ? "selected" : '' ?>>0.75</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '1' ? "selected" : '' ?>>1</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '1.5' ? "selected" : '' ?>>1.5</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '2' ? "selected" : '' ?>>2</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '2.5' ? "selected" : '' ?>>2.5</option>
+                        <option <?php echo isset($ac_name) && $ac_name == '3' ? "selected" : '' ?>>3</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="purchase_year" class="control-label">Purchase Year</label>
-                    <input type="text" name="purchase_year" id="purchase_year" class="form-control form-control-sm rounded-0" required>
+                    <select name="vehicle_model" class="form-select form-select-sm select2 rounded-0" required">
+                <?php
+                 $currentYear = date('Y');
+                 for ($i = $currentYear; $i >= 2010; $i--) {
+                 echo '<option value="'.$i.'">'.$i.'</option>';
+                  }
+                  ?>
+                </select>
+                <small>We only undertake work for models after 2010</small>
                 </div>
                 <div class="form-group">
                     <label for="service_id" class="control-label">Services</label>
@@ -133,7 +151,7 @@ require_once('config.php');
                     end_loader()
                     if(resp.status == 'success'){
                         $('#uni_modal').on('hidden.bs.modal', function(){
-                            if($(this).find('#request_form').length > 0){
+                            if($(this).find('#').length > 0){
                                 setTimeout(() => {
                                     uni_modal("","success_msg.php")
                                 }, 200);

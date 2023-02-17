@@ -36,8 +36,8 @@
 						$i = 1;
 						$qry = $conn->query("SELECT * from service_requests order by unix_timestamp(date_created) desc");
 						while($row = $qry->fetch_assoc()):
-							$sids = $conn->query("SELECT meta_value FROM request_meta where request_id = '{$row['id']}' and meta_field = 'service_id'")->fetch_assoc()['meta_value'];
-							$services  = $conn->query("SELECT * FROM service_list where id in ({$sids}) ");
+							$sids = $conn->query("SELECT meta_value FROM request_meta where meta_field = 'service_id'")->fetch_assoc()['meta_value'];
+							$services  = $conn->query("SELECT * FROM service_list");
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
