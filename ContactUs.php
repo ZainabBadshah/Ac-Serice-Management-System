@@ -88,7 +88,7 @@ require_once('config.php');
                 dataType:'json',
                 error:err=>{
                     console.log(err)
-                    alert_toast("An error occured",'error');
+                    // alert_toast("error occured",'error');
                     end_loader()
                 },
                 success:function(resp){

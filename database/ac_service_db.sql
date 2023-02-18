@@ -50,7 +50,7 @@ INSERT INTO `categories` (`id`, `category`, `status`, `date_created`) VALUES
 -- Table structure for table `mechanics_list`
 --
 
-CREATE TABLE `mechanics_list` (
+CREATE TABLE `technician_list` (
   `id` int(30) NOT NULL,
   `name` text NOT NULL,
   `contact` varchar(50) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `mechanics_list` (
 -- Dumping data for table `mechanics_list`
 --
 
-INSERT INTO `mechanics_list` (`id`, `name`, `contact`, `email`, `status`, `date_created`) VALUES
+INSERT INTO `technician_list` (`id`, `name`, `contact`, `email`, `status`, `date_created`) VALUES
 (1, 'John Smith', '09123456789', 'jsmith@sample.com', 1, '2021-09-30 10:26:11'),
 (2, 'George Wilson', '09112355799', 'gwilson@gmail.com', 1, '2021-09-30 10:30:58');
 
@@ -112,10 +112,10 @@ CREATE TABLE `service_list` (
 --
 
 INSERT INTO `service_list` (`id`, `service`, `description`, `status`, `date_created`) VALUES
-(1, 'Change Oil', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien lectus. Ut posuere, arcu eget bibendum venenatis, quam diam interdum diam, in viverra leo quam eu mi. Sed bibendum mauris nulla, vel vehicula libero elementum vel. Nam blandit justo justo, dapibus sodales risus consectetur nec. Suspendisse ornare in purus et mollis. Praesent placerat quis lectus at hendrerit. Morbi maximus dolor dolor, a maximus mi congue quis.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:11:21'),
-(2, 'Overall Checkup', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Curabitur nec viverra tellus. Donec quis molestie arcu. Sed et blandit dui, vel vehicula tortor. Vivamus fringilla sit amet nibh fringilla ornare. Etiam iaculis ornare purus id feugiat. Etiam mattis erat ut congue tempor. Nam placerat faucibus libero ultrices posuere. Donec ac tempus nulla.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:11:38'),
-(3, 'Engine Tune up', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Sed ultrices fermentum augue. Duis ultricies arcu vitae lorem accumsan porta. Donec fermentum risus ut tincidunt cursus. Sed varius id dolor et euismod. Vestibulum elit massa, varius nec arcu vel, viverra varius dolor. Etiam fermentum vel lorem vel tincidunt. Ut nec libero pulvinar, malesuada lacus et, tempor diam. Aliquam vitae nisl augue.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:12:03'),
-(4, 'Tire Replacement', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Nullam pretium eu justo ac tincidunt. Vestibulum quis est non felis porttitor pretium. Vivamus nec augue ultrices, condimentum risus vitae, pellentesque turpis. Nullam ornare est sapien, sed semper neque imperdiet suscipit. Sed fermentum eros et felis mollis finibus. In condimentum eleifend magna, non consequat nibh viverra nec. Nulla vel sapien libero. Suspendisse varius nisl nec ornare imperdiet.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:12:24');
+(1, 'AC - Installation', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Looking for someone to install your new AC or the old one to a new place. Our experts wiil do it for you in no time.Charges starting from 999/-.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:11:21'),
+(2, 'Ac Demo', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;We have special team for provide Demonstration All Models Split and Window Air Conditioners. Also we are providing demo Virtually through phone call and Video cal as per customers preferans.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:11:38'),
+(3, 'AC Repair In Pune', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Do your AC needs servicing. Call us now to get your AC serviced by our experts at most affordable prices..&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:12:03'),
+(4, 'AC Service & Maintenance', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Do your AC needs servicing. Call us now to get your AC serviced by our experts at most affordable prices..&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, '2021-09-30 14:12:24');
 
 -- --------------------------------------------------------
 
@@ -157,8 +157,8 @@ CREATE TABLE `system_info` (
 --
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
-(1, 'name', 'Vehicle Service Management System'),
-(6, 'short_name', 'VSMS - PHP'),
+(1, 'name', 'Air Conditioner Service Management System'),
+(6, 'short_name', 'Ac Service'),
 (11, 'logo', 'uploads/1632965940_vrs-logo.jpg'),
 (13, 'user_avatar', 'uploads/user_avatar.jpg'),
 (14, 'cover', 'uploads/1632965760_car-shop-clip.jpg');
@@ -249,7 +249,7 @@ ALTER TABLE `categories`
 --
 -- AUTO_INCREMENT for table `mechanics_list`
 --
-ALTER TABLE `mechanics_list`
+ALTER TABLE `technician_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --

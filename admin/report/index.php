@@ -73,7 +73,7 @@ $date_end = isset($_GET['date_end']) ? $_GET['date_end'] :  date("Y-m-d") ;
                         while($mrow = $meta->fetch_assoc()){
                             $row[$mrow['meta_field']] =$mrow['meta_value'];
                         }
-                        $services  = $conn->query("SELECT * FROM service_list where id in ({$row['service_id']}) ");
+                        $services  = $conn->query("SELECT * FROM service_list where id in ({$row['service_id']} ) ");
 
                         while($srow = $services->fetch_assoc()):
                             

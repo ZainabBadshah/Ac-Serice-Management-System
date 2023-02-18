@@ -27,7 +27,7 @@
                         <a class="nav-link" href="./?p=ContactUs">Contact Us</a>
                     </li>
                 </ul>
-                <button class="btn btn-primary ms-lg-3">Register</button>
+                <!-- <button class="btn btn-primary ms-lg-3">Register</button> -->
             </div>
         </div>
     </nav>
