@@ -25,7 +25,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
+						<!-- <th>Date Created</th> -->
 						<th>Service Name</th>
 						<th>Description</th>
 						<th>Status</th>
@@ -41,7 +41,7 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<!-- <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td> -->
 							<td><?php echo $row['service'] ?></td>
 							<td>
                                 <p class="truncate-3 m-0 lh-1"><small><?php echo $row['description'] ?></small></p>

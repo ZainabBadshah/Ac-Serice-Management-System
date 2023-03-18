@@ -24,7 +24,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
+						<th>Date</th>
 						<th>Customer Name</th>
 						<th>Service</th>
 						<th>Status</th>
@@ -41,7 +41,7 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<td><?php echo date("d-m-Y",strtotime($row['date_created'])) ?></td>
 							<td><?php echo ucwords($row['owner_name']) ?></td>
 							<td>
 								<p class="m-0 truncate-3">

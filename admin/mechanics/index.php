@@ -25,7 +25,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date Created</th>
+						<!-- <th>Date Created</th> -->
 						<th>Name</th>
 						<th>Contact</th>
 						<th>Status</th>
@@ -43,7 +43,7 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+							<!-- <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td> -->
 							<td><?php echo ucwords($row['name']) ?></td>
 							<td>
 								<p class="m-0 lh-1">

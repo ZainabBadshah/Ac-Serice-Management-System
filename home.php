@@ -15,22 +15,7 @@
         </div>
     </div>
 <!-- Section
-<section>
-    <div class="container px-4 px-lg-5 mt-5 ">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="fas fa-ubuntu"> Services Provided For: </h3>
-                <hr class="bg-primary opacity-100">
-                <ul class="list-group font-weight-light fas fa-tv">
-                <?php 
-                    $category = $conn->query("SELECT * FROM `categories` where status = 1 order by `category` asc");
-                    while($row=$category->fetch_assoc()):
-                    ?>
-                    <li class="list-group-item"><b><?php echo $row['category'] ?></b></li>
-                    <?php endwhile; ?>
-                </ul>
-            </div>
-            </section> -->
+
 
     <!--CardsServices-->
     <section id="services">
@@ -142,7 +127,7 @@ They also tidied up after themselves.</p>
                 <div class="col-lg-3 col-sm-6">
                     <div class="team-member card-effect">
                         <img src="uploads/cust4.jpg" alt="">
-                        <h5 class="mb-0 mt-4">Rick David</h5>
+                        <h5 class="mb-0 mt-4">Francis Jacob</h5>
                         <p>The engineers that installed the units were brilliant. They did a thorough job, including super neat trunking, and we're tidy for the duration of the job.</p>
                     </div>
                 </div>
